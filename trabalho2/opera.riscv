@@ -1,0 +1,178 @@
+.data
+ADD: .string "ADD: "
+SUB: .string "SUB: "
+AND: .string "AND: "
+OR: .string "OR: "
+XOR: .string "XOR: "
+MASK: .string "MASK: "
+SLL: .string "SLL("
+SRL: .string "SRL("
+end: .string "): "
+msg: .string "\n"
+.text
+main:
+li a7, 5 #ler o primeiro numero
+ecall
+mv t0, a0
+
+li a7, 5 #ler o segundo
+ecall
+mv t1, a0
+
+li a7, 5 #ler o terceiro numero
+ecall
+mv t2, a0
+
+li a0, 1
+la a1, ADD #printar a soma
+li a2, 5
+li a7, 64
+ecall
+
+add a0, t0, t1 #fazer soma
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #Imprimir quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, SUB #printar
+li a2, 5
+li a7, 64
+ecall
+
+sub a0, t0, t1 #subtracao
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #Imprimir quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, AND # printar and
+li a2, 5
+li a7, 64
+ecall
+
+and a0, t0, t1 #and logico
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #Imprimir quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, OR # printar or
+li a2, 4
+li a7, 64
+ecall
+
+or a0, t0, t1 #fazer o or
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #imprimir qubera de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, XOR #printa o xor
+li a2, 5
+li a7, 64
+ecall
+
+xor a0, t0, t1 #xor logico
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #Imprimir quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, MASK #imprime mask
+li a2, 6
+li a7, 64
+ecall
+
+andi a0, t2, 31 #and logico 
+li a7, 1
+ecall
+mv t3, a0
+
+li a0, 1
+la a1, msg #Imprimir qubera de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, SLL #shift a esquerda
+li a2, 4
+li a7, 64
+ecall
+
+andi a0, t2, 31 #and logico
+li a7, 1
+ecall
+mv t3, a0
+
+li a0, 1
+la a1, end #imprimir o )
+li a2, 3
+li a7, 64
+ecall
+
+sll a0, t0, t3 #shift left e print
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #imprimir a quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a0, 1
+la a1, SRL #printar o shift left
+li a2, 4
+li a7, 64
+ecall
+
+andi a0, t2, 31 #and logico
+li a7, 1
+ecall
+mv t3, a0
+
+li a0, 1
+la a1, end #imprimir o )
+li a2, 3
+li a7, 64
+ecall
+
+srl a0, t1, t3 #fazer o shift right
+li a7, 1
+ecall
+
+li a0, 1
+la a1, msg #Imprimir a quebra de linha
+li a2, 1
+li a7, 64
+ecall
+
+li a7, 10
+ecall

@@ -1,0 +1,29 @@
+.data
+espaco: 
+  .string "\n" 
+
+.text
+main:
+      
+    li a7, 5      # receber o input do primeiro numero    
+    ecall             
+
+    mv a1, a0 # mover o primeiro numero
+       
+    li a7, 5          # receber o segundo numero
+    ecall             
+    
+    mv a2, a0 # mover o segundo numero
+
+    add a0, a2, a1   # imprimir a soma  
+    li a7, 1
+    ecall        
+    
+    li a0, 1  # imprimir o \n
+    la a1, espaco 
+    li a2, 1  
+    li a7, 64  
+    ecall  
+
+    li a7, 10 # sair com codigo 0
+    ecall
