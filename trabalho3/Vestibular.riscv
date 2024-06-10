@@ -1,0 +1,59 @@
+.data
+pula: .string "\n"
+gabarito: .space 100
+respostas: .space 100
+.text
+main:
+    
+    li a7, 5
+    ecall #le o tamanho da string
+    mv t0, a0  
+
+    la a0, gabarito
+    li a1, 100 #le o gabarito
+    li a7, 8
+    ecall
+
+    la a0, respostas
+    li a1, 100 #le as respostas
+    li a7, 8
+    ecall
+
+    la t1, gabarito
+    la t2, respostas #carrega eles em t1 e t2
+
+    li t3, 0
+
+compara:
+    beqz t0, fim      # se o tamanho dos caracteres for 0 termina o loop
+
+    lb t4, 0(t1)            #pega o primeiro caractere
+    lb t5, 0(t2)        
+
+    beq t4, t5, certo  #se for igual adiciona as questoes certas
+    j prox
+
+certo:
+    addi t3, t3, 1
+
+prox:
+    addi t1, t1, 1         
+    addi t2, t2, 1         
+    addi t0, t0, -1          # passa pro proximo caractere
+    j compara
+
+fim:
+   
+    mv a0, t3 #finaliza o programa
+    li a7, 1
+    ecall
+
+
+li a0, 1
+la a1, pula
+li a2, 1 
+li a7, 64
+ecall
+
+li a7, 10
+ecall
